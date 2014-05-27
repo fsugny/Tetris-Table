@@ -1,0 +1,454 @@
+# depslib dependency file v1.0
+1395223502 source:f:\emblocks\tetris_table\src\main.c
+	"stm32f4xx_conf.h"
+
+1399972305 f:\emblocks\tetris_table\inc\stm32f4xx_conf.h
+	"stm32f4xx_adc.h"
+	"stm32f4xx_can.h"
+	"stm32f4xx_crc.h"
+	"stm32f4xx_cryp.h"
+	"stm32f4xx_dac.h"
+	"stm32f4xx_dbgmcu.h"
+	"stm32f4xx_dcmi.h"
+	"stm32f4xx_dma.h"
+	"stm32f4xx_exti.h"
+	"stm32f4xx_flash.h"
+	"stm32f4xx_fsmc.h"
+	"stm32f4xx_hash.h"
+	"stm32f4xx_gpio.h"
+	"stm32f4xx_i2c.h"
+	"stm32f4xx_iwdg.h"
+	"stm32f4xx_pwr.h"
+	"stm32f4xx_rcc.h"
+	"stm32f4xx_rng.h"
+	"stm32f4xx_rtc.h"
+	"stm32f4xx_sdio.h"
+	"stm32f4xx_spi.h"
+	"stm32f4xx_syscfg.h"
+	"stm32f4xx_tim.h"
+	"stm32f4xx_usart.h"
+	"stm32f4xx_wwdg.h"
+	"misc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_gpio.h
+	"stm32f4xx.h"
+
+1400575739 f:\emblocks\tetris_table\inc\stm32f4xx.h
+	"core_cm4.h"
+	"system_stm32f4xx.h"
+	<stdint.h>
+	"stm32f4xx_conf.h"
+
+1395219553 f:\emblocks\tetris_table\cmsis\core_cm4.h
+	<stdint.h>
+	<core_cmInstr.h>
+	<core_cmFunc.h>
+	<core_cm4_simd.h>
+
+1395219553 f:\emblocks\tetris_table\cmsis\core_cminstr.h
+	<cmsis_iar.h>
+
+1395219553 f:\emblocks\tetris_table\cmsis\core_cmfunc.h
+	<cmsis_iar.h>
+
+1395219553 f:\emblocks\tetris_table\cmsis\core_cm4_simd.h
+	<cmsis_iar.h>
+
+1395219553 f:\emblocks\tetris_table\inc\system_stm32f4xx.h
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_rcc.h
+	"stm32f4xx.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\misc.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\misc.c
+	"misc.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_adc.c
+	"stm32f4xx_adc.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_adc.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_can.c
+	"stm32f4xx_can.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_can.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_crc.c
+	"stm32f4xx_crc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_crc.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_cryp.c
+	"stm32f4xx_cryp.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_cryp.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_cryp_aes.c
+	"stm32f4xx_cryp.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_cryp_des.c
+	"stm32f4xx_cryp.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_cryp_tdes.c
+	"stm32f4xx_cryp.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_dac.c
+	"stm32f4xx_dac.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_dac.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_dbgmcu.c
+	"stm32f4xx_dbgmcu.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_dbgmcu.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_dcmi.c
+	"stm32f4xx_dcmi.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_dcmi.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_dma.c
+	"stm32f4xx_dma.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_dma.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_exti.c
+	"stm32f4xx_exti.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_exti.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_flash.c
+	"stm32f4xx_flash.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_flash.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_fsmc.c
+	"stm32f4xx_fsmc.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_fsmc.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_gpio.c
+	"stm32f4xx_gpio.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_hash.c
+	"stm32f4xx_hash.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_hash.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_hash_md5.c
+	"stm32f4xx_hash.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_hash_sha1.c
+	"stm32f4xx_hash.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_i2c.c
+	"stm32f4xx_i2c.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_i2c.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_iwdg.c
+	"stm32f4xx_iwdg.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_iwdg.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_pwr.c
+	"stm32f4xx_pwr.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_pwr.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_rcc.c
+	"stm32f4xx_rcc.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_rng.c
+	"stm32f4xx_rng.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_rng.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_rtc.c
+	"stm32f4xx_rtc.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_rtc.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_sdio.c
+	"stm32f4xx_sdio.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_sdio.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_spi.c
+	"stm32f4xx_spi.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_spi.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_syscfg.c
+	"stm32f4xx_syscfg.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_syscfg.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_tim.c
+	"stm32f4xx_tim.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_tim.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_usart.c
+	"stm32f4xx_usart.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_usart.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\spl\src\stm32f4xx_wwdg.c
+	"stm32f4xx_wwdg.h"
+	"stm32f4xx_rcc.h"
+
+1395219553 f:\emblocks\tetris_table\spl\inc\stm32f4xx_wwdg.h
+	"stm32f4xx.h"
+
+1395219553 source:f:\emblocks\tetris_table\src\startup_stm32f4xx.s
+
+1400581943 source:f:\emblocks\tetris_table\src\system_stm32f4xx.c
+	"stm32f4xx.h"
+
+1401185737 source:f:\emblocks\tetris_table\src\main.cpp
+	"stm32f4xx_conf.h"
+	"stm32f4_discovery_audio_codec.h"
+	"sdio.h"
+	"snes_gamepad.h"
+	"gpio_utils.h"
+	"hd44780.h"
+	"ymPlayer.h"
+	<stdio.h>
+	"stm32f4_discovery_audio_codec.h"
+
+1396426238 f:\emblocks\tetris_table\snes_gamepad\snes_gamepad.h
+
+1396434902 source:f:\emblocks\tetris_table\snes_gamepad\snes_gamepad.cpp
+	"stm32f4xx_conf.h"
+	"snes_gamepad.h"
+	"utils.h"
+
+1399924937 source:f:\emblocks\tetris_table\src\system_stm32f4xx.cpp
+	"stm32f4xx.h"
+
+1396427424 f:\emblocks\tetris_table\inc\utils.h
+
+1396434074 source:f:\emblocks\tetris_table\src\gpio_utils.cpp
+	"gpio_utils.h"
+
+1399798127 f:\emblocks\tetris_table\inc\gpio_utils.h
+	"stm32f4xx_conf.h"
+
+1397992431 source:f:\emblocks\tetris_table\fatfs\ff.cpp
+	"ff.h"
+	"diskio.h"
+	<stdarg.h>
+
+1400417772 f:\emblocks\tetris_table\fatfs\ff.h
+	"integer.h"
+	"ffconf.h"
+
+1400417772 f:\emblocks\tetris_table\fatfs\integer.h
+	<windows.h>
+	<tchar.h>
+
+1400755873 f:\emblocks\tetris_table\fatfs\ffconf.h
+
+1400417772 f:\emblocks\tetris_table\fatfs\diskio.h
+	"integer.h"
+
+1397993055 f:\emblocks\tetris_table\fatfs\spi.h
+	<stm32f4xx.h>
+	"stm32f4xx_spi.h"
+
+1397992971 source:f:\emblocks\tetris_table\fatfs\spi.c
+	"spi.h"
+
+1397991943 source:f:\emblocks\tetris_table\hd44780\hd44780.cpp
+	<stdarg.h>
+	<stdbool.h>
+	<stdio.h>
+	"hd44780.h"
+	"stm32f4xx_conf.h"
+	"stm32f4xx_tim.h"
+
+1397991876 f:\emblocks\tetris_table\hd44780\hd44780.h
+	<stdbool.h>
+	"stm32f4xx_conf.h"
+
+1400142779 source:f:\emblocks\tetris_table\fatfs\diskio.cpp
+	"diskio.h"
+
+1397993396 source:f:\emblocks\tetris_table\fatfs\example.c
+	<stm32f4xx.h>
+	<stdio.h>
+	<stdlib.h>
+	"ff.h"
+	"diskio.h"
+
+1400582397 f:\emblocks\tetris_table\ym\ymplayer.h
+	"stm32f4xx.h"
+	"stm32f4_audio.h"
+
+1400751530 source:f:\emblocks\tetris_table\ym\ymplayer.cpp
+	"stm32f4xx_conf.h"
+	"stm32f4_discovery_audio_codec.h"
+	"ymPlayer.h"
+	<stdio.h>
+	<string.h>
+
+1399796758 f:\emblocks\tetris_table\ym\music\music_nz1.h
+
+1319754694 source:f:\emblocks\tetris_table\audio\audio_sample.cpp
+	"stm32f4xx.h"
+
+1399885817 source:f:\emblocks\tetris_table\audio\audio.cpp
+	"stm32f4_discovery_audio_codec.h"
+
+1400579227 f:\emblocks\tetris_table\audio\stm32f4_discovery_audio_codec.h
+	"stm32f4xx.h"
+	"stm32f4xx_gpio.h"
+
+1399888952 source:f:\emblocks\tetris_table\audio\stm32f4_discovery_audio_codec.cpp
+	"stm32f4_discovery_audio_codec.h"
+
+1400149486 f:\emblocks\tetris_table\audio\stm32f4_audio.h
+
+1400149546 source:f:\emblocks\tetris_table\audio\stm32f4_audio.cpp
+	"stm32f4xx.h"
+	"stm32f4_audio.h"
+	<stdio.h>
+	"stm32f4_discovery_audio_codec.h"
+
+1400442517 source:f:\emblocks\tetris_table\audio\stm32f4_discovery_audio_codec.c
+	"stm32f4_discovery_audio_codec.h"
+
+1399892970 f:\emblocks\tetris_table\audio\audio_sample.h
+	"stm32f4xx.h"
+
+1399894140 source:f:\emblocks\tetris_table\audio\audio_sample.c
+	"stm32f4xx.h"
+
+1400755268 source:f:\emblocks\tetris_table\audio\stm32f4xx_it.c
+	"sdio_high_level.h"
+	"stm32f4xx_conf.h"
+
+1399978272 source:f:\emblocks\tetris_table\audio\sample.c
+	"stm32f4xx.h"
+
+1399796771 f:\emblocks\tetris_table\ym\music\music_nz2.h
+
+1399796775 f:\emblocks\tetris_table\ym\music\music_toki.h
+
+1399796765 f:\emblocks\tetris_table\ym\music\music_dalek.h
+
+1400752065 source:f:\emblocks\tetris_table\sdio\syscalls.c
+	<errno.h>
+	<sys/stat.h>
+	<sys/times.h>
+	<sys/unistd.h>
+	<stm32f4xx.h>
+
+1400751985 source:f:\emblocks\tetris_table\sdio\sdio_low_level.c
+	<stm32f4xx.h>
+	"sdio_low_level.h"
+
+1401185470 f:\emblocks\tetris_table\sdio\sdio_low_level.h
+	<stm32f4xx.h>
+
+1401185621 source:f:\emblocks\tetris_table\sdio\sdio_high_level.c
+	"sdio_high_level.h"
+	<stm32f4xx.h>
+	"logf.h"
+
+1401185458 f:\emblocks\tetris_table\sdio\sdio_high_level.h
+	<stm32f4xx.h>
+	"sdio_low_level.h"
+
+1400751823 f:\emblocks\tetris_table\sdio\logf.h
+	<stdio.h>
+
+1401095887 f:\emblocks\tetris_table\sdio\sdio.h
+	<stm32f4xx.h>
+	<stdio.h>
+	"sdio_high_level.h"
+	"logf.h"
+
+1400417772 source:f:\emblocks\tetris_table\fatfs\ff.c
+	"ff.h"
+	"diskio.h"
+	<stdarg.h>
+
+1400756213 source:f:\emblocks\tetris_table\fatfs\option\syscall.c
+	<stdlib.h>
+	<malloc.h>
+	"../ff.h"
+
+1400417772 source:f:\emblocks\tetris_table\fatfs\option\unicode.c
+	"../ff.h"
+	"cc932.c"
+	"cc936.c"
+	"cc949.c"
+	"cc950.c"
+	"ccsbcs.c"
+
+1400417772 f:\emblocks\tetris_table\fatfs\option\cc932.c
+	"../ff.h"
+
+1400417772 f:\emblocks\tetris_table\fatfs\option\cc936.c
+	"../ff.h"
+
+1400417772 f:\emblocks\tetris_table\fatfs\option\cc949.c
+	"../ff.h"
+
+1400417772 f:\emblocks\tetris_table\fatfs\option\cc950.c
+	"../ff.h"
+
+1400417772 f:\emblocks\tetris_table\fatfs\option\ccsbcs.c
+	"../ff.h"
+
+1401101121 source:f:\emblocks\tetris_table\sdio\sdio.c
+	"sdio.h"
+
+1400756183 source:f:\emblocks\tetris_table\fatfs\diskio.c
+	"diskio.h"
+	"sdio_high_level.h"
+
