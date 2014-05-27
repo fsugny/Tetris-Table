@@ -248,16 +248,13 @@
 1400581943 source:f:\emblocks\tetris_table\src\system_stm32f4xx.c
 	"stm32f4xx.h"
 
-1401185737 source:f:\emblocks\tetris_table\src\main.cpp
+1401186175 source:f:\emblocks\tetris_table\src\main.cpp
 	"stm32f4xx_conf.h"
-	"stm32f4_discovery_audio_codec.h"
 	"sdio.h"
 	"snes_gamepad.h"
 	"gpio_utils.h"
 	"hd44780.h"
-	"ymPlayer.h"
 	<stdio.h>
-	"stm32f4_discovery_audio_codec.h"
 
 1396426238 f:\emblocks\tetris_table\snes_gamepad\snes_gamepad.h
 
@@ -394,7 +391,7 @@
 1401185470 f:\emblocks\tetris_table\sdio\sdio_low_level.h
 	<stm32f4xx.h>
 
-1401185621 source:f:\emblocks\tetris_table\sdio\sdio_high_level.c
+1401187497 source:f:\emblocks\tetris_table\sdio\sdio_high_level.c
 	"sdio_high_level.h"
 	<stm32f4xx.h>
 	"logf.h"

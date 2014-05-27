@@ -275,10 +275,6 @@
 		<Unit filename="SPL\src\stm32f4xx_wwdg.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="audio\stm32f4_discovery_audio_codec.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="audio\stm32f4_discovery_audio_codec.h" />
 		<Unit filename="audio\stm32f4xx_it.c">
 			<Option compilerVar="CC" />
 		</Unit>

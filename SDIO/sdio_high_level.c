@@ -1076,7 +1076,6 @@ SD_Error SD_GetCardStatus (SD_CardStatus *cardstatus)
  */
 SD_Error SD_EnableWideBusOperation (uint32_t WideMode)
 {
-    logf("SD_EnableWideBusOperation()\r\n");
     SD_Error errorstatus = SD_OK;
 
     /*!< MMC Card doesn't support this feature */
@@ -1098,7 +1097,6 @@ SD_Error SD_EnableWideBusOperation (uint32_t WideMode)
         }
         else if (SDIO_BusWide_4b == WideMode)
         {
-            logf("Enabling Wide Bus\r\n");
             errorstatus = SDEnWideBus (ENABLE);
 
             if (SD_OK == errorstatus)
@@ -2342,29 +2340,24 @@ static SD_Error SDEnWideBus (FunctionalState NewState)
 
     uint32_t scr[2] = { 0, 0 };
 
-    if (SDIO_GetResponse( SDIO_RESP1 ) & SD_CARD_LOCKED )
+    if ( SDIO_GetResponse( SDIO_RESP1 ) & SD_CARD_LOCKED )
     {
-        logf("SD Lock Unlock Failed\r\n");
         errorstatus = SD_LOCK_UNLOCK_FAILED;
         return (errorstatus);
     }
 
     /*!< Get SCR Register */
-    logf("FindSCR\r\n");
     errorstatus = FindSCR( RCA, scr );
     if ( errorstatus != SD_OK )
     {
         logf("FindSCR Failed\r\n");
         return (errorstatus);
     }
-    else
-    {
-        logf("Find SCR OK\r\n");
-    }
 
     /*!< If wide bus operation to be enabled */
     if ( NewState == ENABLE )
     {
+
         /*!< If requested card supports wide bus operation */
         if ( ( scr[1] & SD_WIDE_BUS_SUPPORT ) != SD_ALLZERO )
         {
@@ -2589,6 +2582,13 @@ static SD_Error IsCardProgramming (uint8_t *pstatus)
         return (errorstatus);
 }
 
+void SD_Delay(__IO uint32_t nCount)
+{
+  while(nCount--)
+  {
+  }
+}
+
 /**
  * @brief  Find the SD card SCR register value.
  * @param  rca: selected card address.
@@ -2597,13 +2597,11 @@ static SD_Error IsCardProgramming (uint8_t *pstatus)
  */
 static SD_Error FindSCR( uint16_t rca, uint32_t *pscr )
 {
-    uint32_t index = 0;
     SD_Error errorstatus = SD_OK;
     uint32_t tempscr[2] = { 0, 0 };
 
     /*!< Set Block Size To 8 Bytes */
     /*!< Send CMD55 APP_CMD with argument as card's RCA */
-    logf("Set Block Size to 8 bytes\r\n");
     SDIO_CmdInitStructure.SDIO_Argument = (uint32_t) 8;
     SDIO_CmdInitStructure.SDIO_CmdIndex = SD_CMD_SET_BLOCKLEN;
     SDIO_CmdInitStructure.SDIO_Response = SDIO_Response_Short;
@@ -2617,7 +2615,6 @@ static SD_Error FindSCR( uint16_t rca, uint32_t *pscr )
     }
 
     /*!< Send CMD55 APP_CMD with argument as card's RCA */
-    logf("Send CMD55 APP_CMD\r\n");
     SDIO_CmdInitStructure.SDIO_Argument = (uint32_t) RCA << 16;
     SDIO_CmdInitStructure.SDIO_CmdIndex = SD_CMD_APP_CMD;
     SDIO_CmdInitStructure.SDIO_Response = SDIO_Response_Short;
@@ -2639,7 +2636,6 @@ static SD_Error FindSCR( uint16_t rca, uint32_t *pscr )
     SDIO_DataConfig (&SDIO_DataInitStructure);
 
     /*!< Send ACMD51 SD_APP_SEND_SCR with argument as 0 */
-    logf("Send ACMD5! SD_APP_SEND_SCR\r\n");
     SDIO_CmdInitStructure.SDIO_Argument = 0x0;
     SDIO_CmdInitStructure.SDIO_CmdIndex = SD_CMD_SD_APP_SEND_SCR;
     SDIO_CmdInitStructure.SDIO_Response = SDIO_Response_Short;
@@ -2652,18 +2648,16 @@ static SD_Error FindSCR( uint16_t rca, uint32_t *pscr )
         return (errorstatus);
     }
 
-    logf("Reading Data\r\n");
 #if defined (SD_DMA_MODE)
-        SDIO_ITConfig (SDIO_IT_DCRCFAIL | SDIO_IT_DTIMEOUT | SDIO_IT_DATAEND | SDIO_IT_RXOVERR | SDIO_IT_STBITERR, ENABLE);
-        SD_LowLevel_DMA_RxConfig ((uint32_t *) tempscr, 2);
-        SDIO_DMACmd (ENABLE);
+    SDIO_ITConfig (SDIO_IT_DCRCFAIL | SDIO_IT_DTIMEOUT | SDIO_IT_DATAEND | SDIO_IT_RXOVERR | SDIO_IT_STBITERR, ENABLE);
+    SD_LowLevel_DMA_RxConfig ((uint32_t *) tempscr, 2);
+    SDIO_DMACmd (ENABLE);
+
+    SD_Delay(10000);
 #else
-    printf("%lx\r\n",SDIO->STA);
-    printf("%lx %lx %lx %lx %lx\r\n",SDIO_FLAG_RXOVERR,SDIO_FLAG_DCRCFAIL,SDIO_FLAG_DTIMEOUT,SDIO_FLAG_DBCKEND,SDIO_FLAG_STBITERR);
-    printf("%lx\r\n",(SDIO->STA & (SDIO_FLAG_RXOVERR | SDIO_FLAG_DCRCFAIL | SDIO_FLAG_DTIMEOUT | SDIO_FLAG_DBCKEND | SDIO_FLAG_STBITERR)));
+    uint32_t index = 0;
     while (!(SDIO->STA & (SDIO_FLAG_RXOVERR | SDIO_FLAG_DCRCFAIL | SDIO_FLAG_DTIMEOUT | SDIO_FLAG_DBCKEND | SDIO_FLAG_STBITERR)))
     {
-        printf("%lx %lx\r\n",SDIO_GetFlagStatus(SDIO_FLAG_RXDAVL),RESET);
         if (SDIO_GetFlagStatus(SDIO_FLAG_RXDAVL) != RESET)
         {
             *(tempscr + index) = SDIO_ReadData();
@@ -2671,12 +2665,9 @@ static SD_Error FindSCR( uint16_t rca, uint32_t *pscr )
         }
     }
 #endif
-    printf("Read %d bytes\r\n",index);
 
-    logf("Check Flags\r\n");
     if (SDIO_GetFlagStatus (SDIO_FLAG_DTIMEOUT) != RESET)
     {
-        logf("TimeOut Flag\r\n");
         SDIO_ClearFlag (SDIO_FLAG_DTIMEOUT);
         errorstatus = SD_DATA_TIMEOUT;
         return (errorstatus);
@@ -2704,7 +2695,6 @@ static SD_Error FindSCR( uint16_t rca, uint32_t *pscr )
     }
 
     /*!< Clear all the static flags */
-    logf("Clear All Static Flags\r\n");
     SDIO_ClearFlag(SDIO_STATIC_FLAGS );
 
     *(pscr + 1) = ((tempscr[0] & SD_0TO7BITS )<< 24)|((tempscr[0] & SD_8TO15BITS )<< 8)|((tempscr[0] & SD_16TO23BITS )>> 8)|((tempscr[0] & SD_24TO31BITS )>> 24);
