@@ -412,7 +412,6 @@ SD_Error SD_Init (void)
         /*!< CMD Response TimeOut (wait for CMDSENT flag) */
         return (errorstatus);
     }
-    logf ("SD_PowerON OK\r\n");
 
     errorstatus = SD_InitializeCards ();
     if (errorstatus != SD_OK)
@@ -421,7 +420,6 @@ SD_Error SD_Init (void)
         /*!< CMD Response TimeOut (wait for CMDSENT flag) */
         return (errorstatus);
     }
-    logf ("SD_InitializeCards OK\r\n");
 
     /*!< Configure the SDIO peripheral */
     /*!< SDIO_CK = SDIOCLK / (SDIO_TRANSFER_CLK_DIV + 2) */
@@ -438,7 +436,6 @@ SD_Error SD_Init (void)
     errorstatus = SD_GetCardInfo (&SDCardInfo);
     if (errorstatus == SD_OK)
     {
-        logf ("SD_GetCardInfo OK\r\n");
         errorstatus = SD_SelectDeselect ((uint32_t) (SDCardInfo.RCA << 16));
     }
     else
@@ -448,7 +445,6 @@ SD_Error SD_Init (void)
 
     if (errorstatus == SD_OK)
     {
-        logf ("SD_SelectDeselect OK\r\n");
         errorstatus = SD_EnableWideBusOperation(SDIO_BusWide_4b);
         if (errorstatus != SD_OK)
         {
@@ -458,11 +454,6 @@ SD_Error SD_Init (void)
     else
     {
         logf ("SD_SelectDeselect failed\r\n");
-    }
-
-    if (errorstatus == SD_OK)
-    {
-        logf ("SD_EnableWideBusOperation OK\r\n");
     }
 
     return (errorstatus);
@@ -1380,14 +1371,9 @@ SD_Error SD_WaitReadOperation (void)
 
         timeout = SD_DATATIMEOUT;
 
-        logf ("1\r\n");
-
         while ((DMAEndOfTransfer == 0x00) && (TransferEnd == 0) && (TransferError == SD_OK) && (timeout > 0)) {
                 timeout--;
         }
-
-        logf ("1.5\r\n");
-        logf ("2 DMAEndOfTransfer = %lu, TransferEnd = %lu, TransferError = %d, timeout = %lu\r\n", DMAEndOfTransfer, TransferEnd, TransferError, timeout);
 
         DMAEndOfTransfer = 0x00;
 
@@ -1396,8 +1382,6 @@ SD_Error SD_WaitReadOperation (void)
         while (((SDIO ->STA & SDIO_FLAG_RXACT)) && (timeout > 0)) {
                 timeout--;
         }
-
-        logf ("3\r\n");
 
         if (StopCondition == 1) {
                 errorstatus = SD_StopTransfer ();
@@ -1410,8 +1394,6 @@ SD_Error SD_WaitReadOperation (void)
 
         /*!< Clear all the static flags */
         SDIO_ClearFlag (SDIO_STATIC_FLAGS );
-
-        logf ("4\r\n");
 
         if (TransferError != SD_OK) {
                 return (TransferError);
@@ -1978,7 +1960,6 @@ SD_Error SD_ProcessIRQSrc (void)
                 TransferError = SD_OK;
                 SDIO_ClearITPendingBit (SDIO_IT_DATAEND);
                 TransferEnd = 1;
-                logf ("SDIO IRQ : TransferEnd = 1, OK\r\n");
         }
         else if (SDIO_GetITStatus (SDIO_IT_DCRCFAIL) != RESET) {
                 SDIO_ClearITPendingBit (SDIO_IT_DCRCFAIL);
@@ -2021,7 +2002,6 @@ void SD_ProcessDMAIRQ (void)
                 DMAEndOfTransfer = 0x01;
                 DMA_ClearFlag (SD_SDIO_DMA_STREAM, SD_SDIO_DMA_FLAG_TCIF | SD_SDIO_DMA_FLAG_FEIF);
         }
-        logf ("DMA...\r\n");
 }
 
 /**

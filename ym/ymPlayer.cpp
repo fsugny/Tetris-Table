@@ -28,7 +28,6 @@ ymPlayer::ymPlayer()
     m_songAttribute = 0x0;
     m_frameRegister = NULL;
     m_currentFrame = 0;
-    m_bufferIndex = 0;
 }
 
 //---------------------------------------------------------------------------------------------------------
@@ -41,35 +40,6 @@ ymPlayer::~ymPlayer()
     m_songAttribute = 0x0;
     delete [] m_frameRegister;
     m_currentFrame = 0;
-}
-
-//---------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------
-
-void ymPlayer::createBuffer( int32_t bufferSize )
-{
-    // Allocate sound buffer
-    m_soundBuffer = new int16_t[ bufferSize ];
-    m_soundBufferSize = bufferSize;
-    // Initialize the buffer to 0
-    for (int32_t i=0;i<bufferSize;++i)
-        m_soundBuffer[i] = 0;
-}
-
-//---------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------
-
-void ymPlayer::play()
-{
-    Audio_MAL_Play((uint32_t) m_soundBuffer, m_soundBufferSize);
-}
-
-//---------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------
-
-void ymPlayer::stop()
-{
-
 }
 
 //---------------------------------------------------------------------------------------------------------
@@ -241,128 +211,3 @@ void ymPlayer::printFrames()
 //---------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------
 
-void ymPlayer::getSampleData( int16_t * _buffer, uint32_t buffer_size, uint32_t playFreq, int half )
-{
-    int16_t * buffer = _buffer;
-
-    // Find number of frames needed to fill the buffer
-    uint32_t nb_samples = buffer_size>>1;
-
-    uint32_t relFreq = (m_header.masterClock/playFreq) << 16;
-
-    // Number of frames we can store in the buffer
-    // Each frame is at originalClock Hz
-    int32_t nb_frames = ( nb_samples * m_header.originalClock ) / playFreq;
-    // Length in sample of each frame in the buffer
-    int32_t frame_length = nb_samples / nb_frames;
-
-    // Index in frames register
-    uint32_t frame_index = m_currentFrame << 4;
-
-    int32_t noise_seed = 1;
-	uint8_t newbit = 0;
-    uint8_t mix;
-    int8_t v;
-    int16_t noise_value;
-
-    for ( uint16_t f=0 ; f<nb_frames ; ++f )
-    {
-        // Get frequency for the 3 oscillators
-        m_oscillator[0].frequency = (relFreq / (m_frameRegister[frame_index+0]+((m_frameRegister[frame_index+1]&0x0F)<<8)));
-        m_oscillator[1].frequency = (relFreq / (m_frameRegister[frame_index+2]+((m_frameRegister[frame_index+3]&0x0F)<<8)));
-        m_oscillator[2].frequency = (relFreq / (m_frameRegister[frame_index+4]+((m_frameRegister[frame_index+5]&0x0F)<<8)));
-
-        // Set phase
-        m_oscillator[0].phase = 0;
-        m_oscillator[1].phase = 0;
-        m_oscillator[2].phase = 0;
-
-        // Set Volume
-        m_oscillator[0].volume = ymVolumeTable[ m_frameRegister[ frame_index +  8 ] & 0x0F ];
-        m_oscillator[1].volume = ymVolumeTable[ m_frameRegister[ frame_index +  9 ] & 0x0F ];
-        m_oscillator[2].volume = ymVolumeTable[ m_frameRegister[ frame_index + 10 ] & 0x0F ];
-
-        int16_t acc = 0;
-        for (uint16_t s=0;s<frame_length;++s)
-        {
-            // Accumulator
-            acc = 0;
-            // Mixing Register
-            mix = ~m_frameRegister[ frame_index + 7 ];
-            // Noise value
-            noise_value = (noise_seed & 0x63) - 32;
-
-            v = 0;
-            if ( mix & 0x01 ) // Channel A Oscillator
-            {
-                if ( m_oscillator[0].phase & 0x10000 )
-                    v = 32;
-                else
-                    v = -32;
-                m_oscillator[0].phase += m_oscillator[0].frequency;
-            }
-            if ( mix & 0x08 )   // Channel A Noise
-                v += noise_value;
-            acc += v * m_oscillator[0].volume;
-
-            v = 0;
-            if ( mix & 0x02 )   // Channel B Oscillator
-            {
-                if ( m_oscillator[1].phase & 0x10000 )
-                    v = 32;
-                else
-                    v = -32;
-                m_oscillator[1].phase += m_oscillator[1].frequency;
-            }
-            if ( mix & 0x10 )   // Channel B Noise
-                v += noise_value;
-            acc += v * m_oscillator[1].volume;
-
-            v = 0;
-            if ( mix & 0x04 )   // Channel C Oscillator
-            {
-                if ( m_oscillator[2].phase & 0x10000 )
-                    v = 32;
-                else
-                    v = -32;
-                m_oscillator[2].phase += m_oscillator[2].frequency;
-            }
-            if ( mix & 0x20 )   // Channel C Noise
-                v += noise_value;
-            acc += v * m_oscillator[2].volume;
-
-            newbit = 0;
-            if(noise_seed & 0x80000000L) newbit ^= 1;
-            if(noise_seed & 0x01000000L) newbit ^= 1;
-            if(noise_seed & 0x00000040L) newbit ^= 1;
-            if(noise_seed & 0x00000200L) newbit ^= 1;
-            noise_seed = (noise_seed << 1) | newbit;
-
-            if ( m_bufferIndex < buffer_size )
-            {
-                buffer[m_bufferIndex+0] = 0;        // Left Channel
-                buffer[m_bufferIndex+1] = acc;      // Right Channel
-            }
-            else
-            {
-                buffer[m_bufferIndex+0] = acc;      // Left Channel
-                buffer[m_bufferIndex+1] = 0;        // Right Channel
-            }
-            m_bufferIndex += 2;
-
-            if (m_bufferIndex >= buffer_size*2)
-                m_bufferIndex = 0;
-        }
-
-        frame_index += 16;
-        m_currentFrame++;
-        if ( m_currentFrame > m_header.nbFrames )
-        {
-            m_currentFrame = 0;//m_header.loopFrame;
-            frame_index = m_currentFrame << 4;
-        }
-    }
-}
-
-//---------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------

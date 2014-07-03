@@ -28,6 +28,7 @@
 					<Add directory=".\ym\music" />
 					<Add directory=".\audio" />
 					<Add directory=".\SDIO" />
+					<Add directory=".\FatFS" />
 				</Compiler>
 				<Assembler>
 					<Add option="-Wa,--gdwarf-2" />
@@ -57,6 +58,8 @@
 					<Add directory=".\ym" />
 					<Add directory=".\ym\music" />
 					<Add directory=".\audio" />
+					<Add directory=".\SDIO" />
+					<Add directory=".\FatFS" />
 				</Compiler>
 				<Assembler>
 					<Add option="-Wa,--no-warn" />
@@ -139,10 +142,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="SDIO\logf.h" />
-		<Unit filename="SDIO\sdio.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="SDIO\sdio.h" />
 		<Unit filename="SDIO\sdio_high_level.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -151,11 +150,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="SDIO\sdio_low_level.h" />
-		<Unit filename="SDIO\syscalls.c">
-			<Option compilerVar="CC" />
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
 		<Unit filename="SPL\inc\misc.h" />
 		<Unit filename="SPL\inc\stm32f4xx_adc.h" />
 		<Unit filename="SPL\inc\stm32f4xx_can.h" />

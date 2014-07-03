@@ -40,19 +40,9 @@ public:
         ymDigiDrum4Bits = 2
     } ymSongAttributes;
 
-    typedef struct
-    {
-        int32_t     frequency;
-        int32_t     phase;
-        uint8_t     waveform;
-        uint8_t     volume;
-    } ymOscillator;
-
 public:
     ymPlayer();
     ~ymPlayer();
-
-    void createBuffer( int32_t bufferSize );
 
     void openFileFromMemory( const uint8_t * music );
     void openFileFromSD();
@@ -61,15 +51,7 @@ public:
     void printInfo();
     void printFrames();
 
-    void getSampleData( int16_t * buffer, uint32_t buffer_size, uint32_t playFreq, int half );
-
-    void play();
-    void stop();
-
-private:
-    int16_t *           m_soundBuffer;
-    uint32_t            m_soundBufferSize;
-
+public:
     const uint8_t *     m_music;
     uint32_t            m_nbFrames;
     uint32_t            m_songAttribute;
@@ -83,10 +65,6 @@ private:
     char *              readString( uint32_t & offset );
 
     uint32_t            m_currentFrame;
-
-    ymOscillator        m_oscillator[3];
-
-    uint32_t            m_bufferIndex;
 };
 
 //---------------------------------------------------------------------------------------------------------
